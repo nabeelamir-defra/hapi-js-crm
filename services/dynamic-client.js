@@ -16,7 +16,6 @@ const msalConfig = {
 }
 
 const cca = new MSAL.ConfidentialClientApplication(msalConfig);
-const serverUrl = 'https://ea-fish-devsandbox.crm4.dynamics.com';
 
 //function that acquires a token and passes it to DynamicsWebApi
 const acquireToken = async () => {
@@ -37,7 +36,7 @@ const acquireToken = async () => {
 }
 
 export const dynamicsClient = new DynamicsWebApi({
-  serverUrl: serverUrl,
+  serverUrl: process.env.DYNAMICS_API_URL,
   onTokenRefresh: acquireToken
 })
 
